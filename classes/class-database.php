@@ -113,7 +113,7 @@ class ek_user_stats_db
 			
 		global $wpdb;
 		
-		echo 'added to '.$wpdb->prefix . $this->dbTable_usersStats;
+
 		
 		 $wpdb->insert( 
 			$wpdb->prefix . $this->dbTable_usersStats, 
