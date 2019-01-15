@@ -1,0 +1,346 @@
+
+
+div.dash-row {
+	position:		relative;
+	box-sizing:     border-box;
+    width:		    100%;
+}
+
+div.dash-row > div {
+	position:		relative;
+    box-sizing:     border-box;
+    width:			33.2%;
+	float:			left;
+    padding-right:  10px;
+}
+div.dash-row > div:first-child {
+	
+}
+div.dash-row > div:last-child {
+	float:			right;
+    padding-right:  0;
+}
+
+div.dash-row > div.cell-25 {
+    width:			25%;
+}
+div.dash-row > div.cell-50 {
+    width:			50%;
+}
+
+
+.dash-quicklinks
+{
+	padding-left:30px;
+}
+
+
+.clear {
+    clear:      both;
+}
+
+
+
+
+
+.userStatsDashWrap h2
+{
+	font-family:'Roboto', sans-serif;
+	font-weight:100 !important;
+	font-size:30px !important;
+	padding-bottom:10px !important;
+	
+
+}
+
+.userStatsDashbox
+{
+	text-align:center;
+	width:100%;
+    max-width:200px;
+	font-family:'Roboto', sans-serif;
+	border:1px solid #ccc;
+	border-radius:10px;	
+	height:auto;
+	box-shadow: 2px 2px 5px 1px #ccc;
+	overflow: hidden;
+}
+
+.userStatsDashboxContent
+{
+	background:#666666;
+	color:#fff;
+	border-radius:0px 0px 10px 10px;
+	padding:5px;
+	height:50px;
+    line-height: 110%;
+}
+
+.userStatsBig
+{
+	padding:15px 0;
+	font-size:40px;
+	line-height:50px;
+	font-weight:100;
+}
+
+.contentBox
+{
+	border:1px solid #6d6d6d;
+	margin:20px;
+	text-align:center;
+	box-shadow: 3px 3px 5px 1px #888888;
+
+}
+
+.ek-statsChart
+{
+	width:610px;
+}
+
+
+
+/* Data tables Customisation */
+.dataTable th
+{
+	text-align:left;
+	color:#fff;
+	background:#4f4f4f;
+}
+
+
+
+
+
+/* Pages */
+
+.statsPagesWrap .toggleButton:hover
+{
+	cursor:pointer;
+}
+
+
+.statsWrap table:hover
+{
+	background:#f7f7f7;
+}
+
+.statsWrap table
+{
+	border-collapse: collapse;
+	border-bottom:1px solid #ccc;
+	padding:20px;	
+}
+
+.statsWrap table td
+{
+	padding:10px;	
+}
+
+
+.statsWrap table th
+{
+	background:#000;
+	color:#fff;
+	text-align:left;
+	padding:10px;
+	margin-bottom:10px;
+}
+
+
+
+/* Progress Reports */
+
+
+.ekStatsUserTopicProgressReport .topicDiv
+{
+	border:1px solid #ccc;
+	padding:5px 20px;
+	background:#fff;
+	margin-top:20px;
+	font-size:18px;
+}
+
+.ekStatsUserTopicProgressReport h3
+{
+	font-size:16px;
+	padding-left:20px;
+	color:#666;
+	
+	
+}
+
+.ekStatsUserTopicProgressReport table
+{
+	padding-left:50px;
+	font-size:12px;
+
+}
+
+.ekStatsUserTopicProgressReport table td
+{
+	border-bottom:1px solid #ccc;
+	padding:10px;
+}
+
+.ekStatsUserTopicProgressReport .ekStatsReportNotRead
+{
+	color:red;
+}
+
+.ekStatsUserTopicProgressReport .ekStatsReportRead
+{
+	color:green;
+	font-weight:bold;
+}
+
+
+
+
+.chartFilteringOptions
+{
+	display:flex;
+}
+
+.chartFilteringOptions >div 
+{
+	padding:10px;
+	margin-right:10px;
+	background:#fff;
+	border:1px solid #ccc;
+	border-radius:4px;
+	
+}
+
+/* Chart Page Wrap */
+.chartStatsWrap
+{
+	background:fff;
+}
+
+.graphTopRow
+{
+	display:flex;
+	background:#fff;
+	margin-bottom:10px;
+	padding:10px 20px;
+}
+
+.graphTopRow1 > div
+{
+	border:1px solid #ccc;
+	padding:10px;
+	background:#fff;
+	border-radius:4px;
+	margin:0px 10px 10px 0px;
+
+}
+
+.graphTopRow > div
+{
+	padding:10px;
+	background:#fff;
+	margin:0px 10px 10px 0px;
+
+}
+
+.graphTopRow .statsChartHits
+{
+	text-align:center;	
+}
+
+.graphTopRow .chartStatsData
+{
+	font-size:30px;
+	padding:10px;
+	text-align:center;	
+}
+
+
+.statsDashUserList
+{
+	display:flex;
+	flex-direction: column;
+}
+
+.statsDashUserList a
+{
+	text-decoration:none;
+}
+
+.statsDashListUser
+{
+	display:flex;
+	border-bottom:1px solid #ccc;
+	width:100%;
+	align-items: center;
+}
+
+.statsDashListUser .statsDashListAvatar
+{
+	width:50px;
+	padding-right:10px;
+}
+
+
+.statsDashListAvatar img
+{
+	height:50px;
+	width:50px;
+	border-radius: 50%;
+}
+.statsDashListName
+{
+	display:block;
+	font-weight:bold;
+}
+
+.statsDashListSince
+{
+	display:block;
+	color:#ccc;
+}
+
+
+/* Main Dashboard Index*/
+
+.ek-stats-main-dash
+{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+
+.ek-stats-main-dash-left
+{
+	width:70%;	
+}
+
+
+.ek-stats-main-dash-right
+{
+	width:25%;
+	margin-right:10px;
+}
+
+.ek-stats-main-dash-right > div
+{
+	margin-left:10px;
+	
+}
+
+.ek-stats-main-dash-right > div
+{
+	background:	#fff;
+	padding:10px;
+	margin-bottom:10px;
+}
+
+
+.ek-stats-heading
+{
+	font-family:'Roboto', sans-serif;
+	font-weight:100; 
+	font-size:18px;
+	padding-bottom:10px;
+}
