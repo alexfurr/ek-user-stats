@@ -6,7 +6,7 @@ Version: 0.1
 Author: Alex Furr and Simon Ward
 License: GPL
 */
-define( 'USER_STATS_URL', plugins_url('ek-users-stats' , dirname( __FILE__ )) );
+define( 'USER_STATS_URL', plugins_url('ek-user-stats' , dirname( __FILE__ )) );
 define( 'USER_STATS_PATH', plugin_dir_path(__FILE__) );
 
 include_once( USER_STATS_PATH . 'functions.php' );
