@@ -37,4 +37,3 @@ include_once( USER_STATS_PATH . '/classes/class-export.php');
 
 ?>
 
-GitHub Plugin URI: https://github.com/ImperialCollegeLondon/ek-user-stats
