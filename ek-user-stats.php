@@ -2,10 +2,13 @@
 /*
 Plugin Name: Edukit User Stats
 Description: Gather stats about registered users activity on your site
-Version: 0.2
+Version: 0.3
 Author: Alex Furr and Simon Ward
 License: GPL
+GitHub Plugin URI: https://github.com/ImperialCollegeLondon/ek-user-stats
 */
+
+
 define( 'USER_STATS_URL', plugins_url('ek-user-stats' , dirname( __FILE__ )) );
 define( 'USER_STATS_PATH', plugin_dir_path(__FILE__) );
 
@@ -33,3 +36,5 @@ include_once( USER_STATS_PATH . 'lib/browser.php' );
 include_once( USER_STATS_PATH . '/classes/class-export.php');
 
 ?>
+
+GitHub Plugin URI: https://github.com/ImperialCollegeLondon/ek-user-stats
