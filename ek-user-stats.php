@@ -2,7 +2,7 @@
 /*
 Plugin Name: Edukit User Stats
 Description: Gather stats about registered users activity on your site
-Version: 0.1
+Version: 0.2
 Author: Alex Furr and Simon Ward
 License: GPL
 */
