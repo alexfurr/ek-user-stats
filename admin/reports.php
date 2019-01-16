@@ -101,7 +101,9 @@ $browserData = $myChartData['browser'];
 
 $ek_gCHARTS = new ek_gCHARTS();
 
-echo '<div class="contentBox ek-statsChart">';
+echo '<div class="containerChart">';
+
+echo '<div class="contentBox-01 ek-statsChart">';
 
 echo '<h1>Access by Device Type</h1>';
 $ek_gCHARTS->draw( 
@@ -115,7 +117,7 @@ $ek_gCHARTS->draw(
 echo '</div>';
 
 
-echo '<div class="contentBox ek-statsChart">';
+echo '<div class="contentBox-02 ek-statsChart">';
 echo '<h1>Access by Platform</h1>';
 $ek_gCHARTS->draw( 
 	'pie', 				//chart type
@@ -128,7 +130,7 @@ $ek_gCHARTS->draw(
 echo '</div>';
 
 
-echo '<div class="contentBox ek-statsChart">';
+echo '<div class="contentBox-03 ek-statsChart">';
 echo '<h1>Access by Browser</h1>';
 $ek_gCHARTS->draw( 
 	'pie', 				//chart type
@@ -140,7 +142,7 @@ $ek_gCHARTS->draw(
 );	
 
 echo '</div>';
-
+echo '</div>'; // End of container chart
 
 echo '</div>'; // End of preload content
 echo ek_user_stats_draw::drawPreloader();

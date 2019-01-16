@@ -1,4 +1,28 @@
+/***** UPDATED BY BC - 16/01/2018 ******/
 
+.ek-preload-content {
+	overflow: hidden;
+}
+
+/***** STUDENT LIST TABLE  ******/
+
+.dataTables_wrapper table.dataTable.no-footer  {
+
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-bottom: none;
+}
+
+
+table.dataTable.no-footer tbody td {
+	color: gray;
+    padding: 12px 40px;
+    white-space: nowrap;
+}
+
+table.dataTable.no-footer tbody tr:nth-of-type(even) {
+    background-color: #f5f5f5;
+}
 
 div.dash-row {
 	position:		relative;
@@ -31,12 +55,12 @@ div.dash-row > div.cell-50 {
 
 .dash-quicklinks
 {
-	padding-left:30px;
+	padding-left: 30px;
 }
 
 
 .clear {
-    clear:      both;
+    clear: both;
 }
 
 
@@ -84,18 +108,89 @@ div.dash-row > div.cell-50 {
 	font-weight:100;
 }
 
-.contentBox
-{
-	border:1px solid #6d6d6d;
-	margin:20px;
-	text-align:center;
-	box-shadow: 3px 3px 5px 1px #888888;
+/**** CONTAINER CHART ****/
+
+
+
+.containerChart {
+
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 30px;
+	overflow: hidden;
 
 }
 
+
+
 .ek-statsChart
 {
-	width:610px;
+	width: 30%;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin: 0 10px 0 10px;
+	box-shadow: 10px 10px 5px 0 rgba(230,230,230,1);
+
+}
+
+@media (min-width: 992px)
+.ek-statsChart {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+@media (min-width: 576px)
+.ek-statsChart {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+
+.contentBox-01,.contentBox-01 rect  {
+	background-image: -webkit-linear-gradient(90deg,#3f5efb 0%,#fc466b 100%);
+	fill: transparent;
+
+}
+
+.contentBox-02, .contentBox-02 rect  {
+	background-image: -webkit-linear-gradient(90deg,#11998e 0%,#38ef7d 100%);
+	fill: transparent;
+}
+
+
+.contentBox-03, .contentBox-03 rect {
+	background-image: -webkit-linear-gradient(90deg,#ee0979 0%,#ff6a00 100%);
+	fill: transparent;
+}
+
+
+
+.ek-statsChart g text {
+ font-size: 14px !important;
+ text-transform: uppercase;
+ color: #343a40;
+}
+
+.ek-statsChart g path {
+	fill: #5264f2 !important;
+	stroke-width: 1px;
+    stroke:transparent;
+}
+
+
+
+.ek-statsChart h1 {
+
+    padding: 20px;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+    border: 0 !important;
+	background: rgba(255, 255, 255, .2);
+	font-weight: 400 !important;
+	font-size: 18px;
+	margin: 0 0 20px 0 !important;
 }
 
 
@@ -112,7 +207,14 @@ div.dash-row > div.cell-50 {
 
 
 
-/* Pages */
+/***** PAGE REPORTS *******/
+
+.statsPagesWrap {
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: .35em;
+
+}
 
 .statsPagesWrap .toggleButton:hover
 {
@@ -130,22 +232,40 @@ div.dash-row > div.cell-50 {
 	border-collapse: collapse;
 	border-bottom:1px solid #ccc;
 	padding:20px;	
+
 }
 
 .statsWrap table td
 {
 	padding:10px;	
+	color: #343a40;
+	font-size: 14px;
+	font-weight: 600;
+    text-transform: capitalize;
+    vertical-align: middle;
+	
 }
 
 
 .statsWrap table th
 {
-	background:#000;
-	color:#fff;
-	text-align:left;
-	padding:10px;
-	margin-bottom:10px;
+
+	border: none;
+    border-bottom: 1px solid #e8e9ef;
+    color: #868e96;
+    font-size: 12px;
+    font-weight: 400;
+    padding: .75em 1.25em;
+	text-transform: uppercase;
+	
+
 }
+
+.statsWrap table tr th {
+	background: #e8e9ef;
+}
+
+
 
 
 
@@ -218,12 +338,18 @@ div.dash-row > div.cell-50 {
 	background:fff;
 }
 
+.chartStatsWrap rect {
+	fill: #1b2a47;
+	opacity: 0.35;
+}
+
 .graphTopRow
 {
 	display:flex;
-	background:#fff;
+	background:#1b2a47;
 	margin-bottom:10px;
 	padding:10px 20px;
+	border-radius: 5px;
 }
 
 .graphTopRow1 > div
@@ -239,7 +365,8 @@ div.dash-row > div.cell-50 {
 .graphTopRow > div
 {
 	padding:10px;
-	background:#fff;
+	background:#1b2a47;
+	color: #fff;
 	margin:0px 10px 10px 0px;
 
 }
@@ -271,14 +398,17 @@ div.dash-row > div.cell-50 {
 .statsDashListUser
 {
 	display:flex;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px dotted #c2e6f3;
 	width:100%;
 	align-items: center;
+	padding: 20px 0 15px 10px;    
+	border-left: 3px solid #6ccaec;
+
 }
 
 .statsDashListUser .statsDashListAvatar
 {
-	width:50px;
+	width:50px; 
 	padding-right:10px;
 }
 
@@ -289,16 +419,22 @@ div.dash-row > div.cell-50 {
 	width:50px;
 	border-radius: 50%;
 }
+
+
 .statsDashListName
 {
 	display:block;
 	font-weight:bold;
+	font-size: 16px;
 }
 
 .statsDashListSince
 {
 	display:block;
-	color:#ccc;
+	color:gray;
+	font-size: 14px;
+	line-height: 1.75;
+
 }
 
 
@@ -334,13 +470,24 @@ div.dash-row > div.cell-50 {
 	background:	#fff;
 	padding:10px;
 	margin-bottom:10px;
-}
 
+	
+}
 
 .ek-stats-heading
 {
 	font-family:'Roboto', sans-serif;
-	font-weight:100; 
-	font-size:18px;
-	padding-bottom:10px;
+	font-weight:300; 
+	font-size:28px;
+	background: #58c9f3;
+	-webkit-border-radius: 4px 4px 0 0;
+	color: #fff;
+	padding: 40px 10px 10px;
+	position: relative;
+	min-height: 50px;
+}
+
+.statsPercentVisited rect {
+	fill: #1b2a47;
+	opacity: 0.35;
 }
