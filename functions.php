@@ -269,3 +269,6 @@ class ek_user_stats
 	}		
 	
 } //Close class
+
+
+?>
