@@ -21,6 +21,12 @@ class ek_user_stats
 		add_action('wp_dashboard_setup', array($this, 'my_custom_dashboard_widgets') );		
 		add_action( 'admin_enqueue_scripts', array( $this, 'adminEnqueues' ));
 		add_action( 'admin_menu', array( $this, 'createAdminMenu' ) );
+		
+		
+		// Add network  pages for global stats
+		add_action( 'network_admin_menu', array( $this, 'create_NetworkAdminPages' ));			
+		
+		
 	}
 	
 	
@@ -239,6 +245,34 @@ class ek_user_stats
 
 
 		
+	}	
+	
+	function create_NetworkAdminPages()
+	{
+
+		$parentMenuSlug = 'ek-stats-network';		
+
+		/* Network Admin Pages */	
+		$page_title = "Network Stats";
+		$menu_title = "Network Stats";
+		$capability = "manage_network_options"; //'manage_options' for administrators.
+		$function = array( $this, 'drawNetworkStats' );
+		$icon = 'dashicons-chart-line';
+		$handle = add_menu_page( $page_title, $menu_title, $capability, $parentMenuSlug, $function, $icon );
+		
+			
+		
+		
+		
+	}
+	
+	
+	//~~~~~ Drawing
+	
+
+	function drawNetworkStats()
+	{
+		include_once( dirname(__FILE__) . '/admin/network_stats.php');
 	}	
 	
 	

@@ -314,13 +314,7 @@ class ek_user_stats_queries
 					$uniqueUsersMasterArray[$userID]=true;
 					
 				}				
-			
-			
-			
-			
-			
-			
-			
+
 			break;
 			
 		}
@@ -368,6 +362,230 @@ class ek_user_stats_queries
 
 	}
 	
+	static function getNetworkStatsDataForGraph($args)
+	{
+
+		$startDate = $args['startDate'];
+		$endDate = $args['endDate'];
+		$filterType=$args['filterType'];
+			
+		$args = array(
+			"startDate"	=> $startDate,
+			"endDate"	=> $endDate,
+		);
+		
+		// Create blank array of the hits etc		
+		$dataArray = array();		
+		$masterTotalHits = 0;		
+		$uniqueUsersMasterArray = array();		
+		
+		$siteData = array();
+		
+		
+		// Create the empty array
+		switch ($filterType)
+		{
+			case "year":
+				
+				$thisYear = date('Y', strtotime($startDate) );
+				
+				// Create the array
+				$i=1;
+				while ($i<=12)
+				{
+					$monthValue = $i;
+					
+					// Ao
+					if($monthValue<10){$monthValue = '0'.$monthValue;}		
+					$monthValue = date('F', strtotime($thisYear.'-'.$monthValue) );
+					
+					$dataArray[$monthValue]['totalHits'] = 0;
+					$dataArray[$monthValue]['uniqueUsers'] = array();					
+					$i++;
+				}
+				
+				
+			break;
+			
+			
+			default:
+				$period = new DatePeriod(
+					 new DateTime($startDate),
+					 new DateInterval('P1D'),
+					 new DateTime($endDate)
+				);			
+			
+				foreach ($period as $key => $value) {
+					$thisDate =  $value->format('jS (D)');
+					$checkMonday = $value->format('N');
+					if($checkMonday==1)
+					{
+						$thisDate =  $value->format('jS (D)');
+					}
+					else
+					{
+						$thisDate =  $value->format('jS');
+					}
+					$dataArray[$thisDate]['totalHits'] = 0;
+					$dataArray[$thisDate]['uniqueUsers'] = array();
+				}			
+			
+			break;
+		}					
+		
+		
+		
+		
+		// Get the blog list
+		
+		
+		$sites = get_sites();
+
+		foreach ( $sites as $site ) {
+			
+			$blogID = $site->blog_id;
+			switch_to_blog( $blogID );
+			
+			$siteData[$blogID] = array();
+			$blogName = get_bloginfo( 'name' );
+			$blogURL = network_site_url( '/' );
+			$siteData[$blogID]['blogName'] = $blogName;
+			$siteData[$blogID]['blogURL'] = $blogURL;
+
+			$tempSiteHits = 0;
+			$tempSiteUsers = array();
+			
+			// Check if the stats plugin is installed or not
+			// Check to see if the user stats plugin is activated. If so get the stat data	
+			$myActivity = ek_user_stats_queries::getActivity($args);		
+
+			
+			switch ($filterType)
+			{
+				case "year":
+
+					foreach($myActivity as $activityMeta)
+					{
+						$read_date = $activityMeta['read_date'];
+						$read_date = date('F', strtotime($read_date) );
+						$userID = $activityMeta['user_id'];
+						
+						// Increment the total hits by one
+						$totalHits = $dataArray[$read_date]['totalHits'];		
+						$newHits = $totalHits+1;
+						
+						$dataArray[$read_date]['totalHits'] = $dataArray[$read_date]['totalHits'] + $newHits;
+						$dataArray[$read_date]['uniqueUsers'][$userID] = true;
+						
+						// Set the master hits and master unique users array
+						$masterTotalHits++;
+						$uniqueUsersMasterArray[$userID]=true;
+						
+						
+						// Set the temp array for this site
+						$tempSiteHits = $tempSiteHits+1;
+						$tempSiteUsers[$userID] = true;						
+					}		
+					
+			
+				break;
+				
+				
+				default:
+
+					foreach($myActivity as $activityMeta)
+					{
+						$read_date = $activityMeta['read_date'];
+						
+						
+						$checkMonday = date('N', strtotime($read_date) );
+
+						if($checkMonday==1)
+						{
+							$read_date = date('jS (D)', strtotime($read_date) );
+						}
+						else
+						{
+							$read_date = date('jS', strtotime($read_date) );
+						}					
+						
+						
+						$userID = $activityMeta['user_id'];
+						
+						// Increment the total hits by one
+						$totalHits = $dataArray[$read_date]['totalHits'];
+
+						$newHits = $totalHits+1;
+						
+						// Set the temp array for this site
+						$tempSiteHits = $tempSiteHits+1;
+						$tempSiteUsers[$userID] = true;
+						
+						// Set the master array as well
+						$dataArray[$read_date]['totalHits'] = $newHits;
+						$dataArray[$read_date]['uniqueUsers'][$userID] = true;
+						
+						// Set the master hits and master unique users array
+						$masterTotalHits++;
+						$uniqueUsersMasterArray[$userID]=true;
+						
+					}				
+
+				break;
+				
+			}	
+			
+			
+			$siteData[$blogID]['totalHits'] = 	$tempSiteHits;	
+			$siteData[$blogID]['users'] = 	$tempSiteUsers;
+			
+			restore_current_blog();				
+		}
+		
+		
+		// Create arrays of the data
+		$graphData['dataCols'] = array(
+			"Date", // The Vertical Axis Name
+			
+			// The first set of data meta
+			array(
+				"name" => "Total  Hits",
+				"type" => "bar",
+			),
+			
+			// The scond data meta
+			array(
+				"name" => "Unique Users",
+				"type" => "line",
+
+			),
+		);
+		
+		$graphData['data'] = array();
+
+
+		foreach($dataArray as $thisDay => $thisDayData)
+		{
+			$thisDayHits = $thisDayData['totalHits'];
+			$thisDayUniqueUsers = count($thisDayData['uniqueUsers']);
+			
+			$graphData['data'][$thisDay][] = $thisDayHits;			
+			$graphData['data'][$thisDay][] = $thisDayUniqueUsers;			
+		}
+		
+		$graphData['totalHits'] = $masterTotalHits;
+		$graphData['uniqueUsers'] = count($uniqueUsersMasterArray);
+		
+		$returnArray = array();
+		
+		$returnArray['graphData'] = $graphData;
+		$returnArray['siteData'] = $siteData;
+		return $returnArray;		
+	
+
+
+	}	
+	
 	
 	public static function getLast10activeUsers()
 	{
@@ -389,8 +607,7 @@ class ek_user_stats_queries
 		
 		
 	}
-	
-	
+
 	
 	
 	

@@ -530,23 +530,39 @@ class ek_user_stats_draw
 		
 		
 		$filterStr =  ek_user_stats_draw::drawFiltering();
-		
 		$startDate  = $args['startDate'];
 		$endDate  = $args['endDate'];
 		$chartTitle = $args['chartTitle'];
 		$filterType=$args['filterType'];
-
+		
+		
+		$siteData = ''; // Blank Var for returning if not network
+		$network = false;
+		
+		if(isset($args['network']) )
+		{
+			$network=true;
+		}
+		
 		
 		$args = array(
 			"startDate"	=> $startDate,
 			"endDate"	=> $endDate,
 			"filterType" => $filterType,
 		);
-		$graphData = ek_user_stats_queries::getStatsDataForGraph($args);		
-				
 		
+		if($network==true)
+		{
+			$returnData = ek_user_stats_queries::getNetworkStatsDataForGraph($args);		
+			$graphData = $returnData['graphData'];
+			$siteData = $returnData['siteData'];
+		}
+		else
+		{
+			$graphData = ek_user_stats_queries::getStatsDataForGraph($args);			
+		}	
 		
-		
+
 		$totalHits = 	$graphData['totalHits'];	
 		$uniqueUsers = 	$graphData['uniqueUsers'];	
 		$overviewStats = '';
@@ -581,6 +597,9 @@ class ek_user_stats_draw
 		$ek_gCHARTS->drawCombo( $graphArgs );
 		
 		echo '</div>';	
+		
+		// Return the raw data
+		return $siteData;
 		
 
 
