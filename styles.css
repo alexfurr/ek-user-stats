@@ -37,9 +37,7 @@ div.dash-row > div {
 	float:			left;
     padding-right:  10px;
 }
-div.dash-row > div:first-child {
-	
-}
+
 div.dash-row > div:last-child {
 	float:			right;
     padding-right:  0;
@@ -121,16 +119,20 @@ div.dash-row > div.cell-50 {
 
 }
 
-
-
 .ek-statsChart
 {
-	width: 30%;
+	width: auto;
+	height: 400px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
-	margin: 0 10px 0 10px;
+	margin: 0 auto;
 	border: 1px solid #ddd;
 
+}
+
+#platformTypeDiv, #deviceTypeDiv, #browserTypeDiv {
+	height: auto !important; 
+	width: auto !important;
 }
 
 @media (min-width: 992px)
@@ -451,7 +453,6 @@ div.dash-row > div.cell-50 {
 	font-weight:300; 
 	font-size:28px;
 	background: #58c9f3;
-	-webkit-border-radius: 4px 4px 0 0;
 	color: #fff;
 	padding: 40px 10px 10px;
 	position: relative;
