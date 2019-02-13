@@ -1,4 +1,4 @@
-/***** UPDATED BY BC - 16/01/2018 ******/
+/***** UPDATED BY BC - 14/02/2019 ******/
 
 .ek-preload-content {
 	overflow: hidden;
@@ -126,10 +126,10 @@ div.dash-row > div.cell-50 {
 .ek-statsChart
 {
 	width: 30%;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
 	margin: 0 10px 0 10px;
-	box-shadow: 10px 10px 5px 0 rgba(230,230,230,1);
+	border: 1px solid #ddd;
 
 }
 
@@ -147,47 +147,23 @@ div.dash-row > div.cell-50 {
 }
 
 
-.contentBox-01,.contentBox-01 rect  {
-	background-image: -webkit-linear-gradient(90deg,#3f5efb 0%,#fc466b 100%);
-	fill: transparent;
 
-}
-
-.contentBox-02, .contentBox-02 rect  {
-	background-image: -webkit-linear-gradient(90deg,#11998e 0%,#38ef7d 100%);
-	fill: transparent;
-}
-
-
-.contentBox-03, .contentBox-03 rect {
-	background-image: -webkit-linear-gradient(90deg,#ee0979 0%,#ff6a00 100%);
-	fill: transparent;
-}
-
-
-
-.ek-statsChart g text {
- font-size: 14px !important;
- text-transform: uppercase;
- color: #343a40;
-}
-
+/*
 .ek-statsChart g path {
 	fill: #5264f2 !important;
 	stroke-width: 1px;
     stroke:transparent;
 }
-
+*/
 
 
 .ek-statsChart h1 {
 
     padding: 20px;
 	text-align: center;
-	color: #fff;
 	text-transform: uppercase;
     border: 0 !important;
-	background: rgba(255, 255, 255, .2);
+	background:#ddd;
 	font-weight: 400 !important;
 	font-size: 18px;
 	margin: 0 0 20px 0 !important;
@@ -338,11 +314,6 @@ div.dash-row > div.cell-50 {
 	background:fff;
 }
 
-.chartStatsWrap rect {
-	fill: #1b2a47;
-	opacity: 0.35;
-}
-
 .graphTopRow
 {
 	display:flex;
@@ -487,7 +458,3 @@ div.dash-row > div.cell-50 {
 	min-height: 50px;
 }
 
-.statsPercentVisited rect {
-	fill: #1b2a47;
-	opacity: 0.35;
-}
