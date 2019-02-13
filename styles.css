@@ -158,6 +158,12 @@ div.dash-row > div.cell-50 {
 }
 */
 
+.ek-statsChart g text {
+	fill: #000 !important;
+	font-size: 13px !important;
+	font-family: Roboto, sans-serif !important;
+}
+
 
 .ek-statsChart h1 {
 
